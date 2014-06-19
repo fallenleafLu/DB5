@@ -54,7 +54,7 @@
                    forKey:themeName];
 	}
     
-    for (VSTheme *theme in themes) { /*All themes inherit from the default theme.*/
+    for (VSTheme *theme in themes.allValues) { /*All themes inherit from the default theme.*/
 		if (theme != _defaultTheme) {
 			theme.parentTheme = _defaultTheme;
         }
