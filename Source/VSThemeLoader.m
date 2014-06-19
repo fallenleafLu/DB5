@@ -13,51 +13,56 @@
 @interface VSThemeLoader ()
 
 @property (nonatomic, strong, readwrite) VSTheme *defaultTheme;
-@property (nonatomic, strong, readwrite) NSArray *themes;
+@property (nonatomic, strong, readwrite) NSDictionary *themes;
 @end
 
 
 @implementation VSThemeLoader
 
++ (VSThemeLoader *)sharedThemeLoader {
+    static dispatch_once_t onceToken;
+    static VSThemeLoader *themeLoader;
+    dispatch_once(&onceToken, ^{
+        themeLoader = [[VSThemeLoader alloc] init];
+    });
+    
+    return themeLoader;
+}
 
-- (id)init {
-	
+- (instancetype)init {
+	return [self initWithPropertyListName:@"DB5"];
+}
+
+- (instancetype)initWithPropertyListName:(NSString *)name {
 	self = [super init];
-	if (self == nil)
+	if (!self) {
 		return nil;
+    }
 	
-	NSString *themesFilePath = [[NSBundle mainBundle] pathForResource:@"DB5" ofType:@"plist"];
+	NSString *themesFilePath = [[NSBundle mainBundle] pathForResource:name
+                                                               ofType:@"plist"];
 	NSDictionary *themesDictionary = [NSDictionary dictionaryWithContentsOfFile:themesFilePath];
 	
-	NSMutableArray *themes = [NSMutableArray array];
-	for (NSString *oneKey in themesDictionary) {
-		
-		VSTheme *theme = [[VSTheme alloc] initWithDictionary:themesDictionary[oneKey]];
-		if ([[oneKey lowercaseString] isEqualToString:@"default"])
+	NSMutableDictionary *themes = [NSMutableDictionary dictionary];
+	for (NSString *themeName in themesDictionary.allKeys) {
+		VSTheme *theme = [[VSTheme alloc] initWithDictionary:themesDictionary[themeName]];
+		if ([[themeName lowercaseString] isEqualToString:@"default"]) {
 			_defaultTheme = theme;
-		theme.name = oneKey;
-		[themes addObject:theme];
+        }
+		theme.name = themeName;
+		[themes setObject:theme
+                   forKey:themeName];
 	}
-
-    for (VSTheme *oneTheme in themes) { /*All themes inherit from the default theme.*/
-		if (oneTheme != _defaultTheme)
-			oneTheme.parentTheme = _defaultTheme;
+    
+    for (VSTheme *theme in themes) { /*All themes inherit from the default theme.*/
+		if (theme != _defaultTheme) {
+			theme.parentTheme = _defaultTheme;
+        }
     }
     
 	_themes = themes;
 	
 	return self;
-}
-
-
-- (VSTheme *)themeNamed:(NSString *)themeName {
-
-	for (VSTheme *oneTheme in self.themes) {
-		if ([themeName isEqualToString:oneTheme.name])
-			return oneTheme;
-	}
-
-	return nil;
 }
 
 @end

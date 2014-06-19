@@ -96,10 +96,7 @@
 				844CCE28177B6B5900B8BDF0 /* DB5ViewController.h */,
 				844CCE29177B6B5900B8BDF0 /* DB5ViewController.m */,
 				844CCE2B177B6B5900B8BDF0 /* DB5ViewController.xib */,
-				840375F3177BD9A600188A0B /* VSThemeLoader.h */,
-				840375F4177BD9A600188A0B /* VSThemeLoader.m */,
-				840375F1177BD9A600188A0B /* VSTheme.h */,
-				840375F2177BD9A600188A0B /* VSTheme.m */,
+				B452D2321952EE9C00673304 /* DB5 */,
 				840375F7177BDA9E00188A0B /* DB5.plist */,
 				844CCE17177B6B5900B8BDF0 /* Supporting Files */,
 			);
@@ -118,6 +115,17 @@
 				844CCE26177B6B5900B8BDF0 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B452D2321952EE9C00673304 /* DB5 */ = {
+			isa = PBXGroup;
+			children = (
+				840375F3177BD9A600188A0B /* VSThemeLoader.h */,
+				840375F4177BD9A600188A0B /* VSThemeLoader.m */,
+				840375F1177BD9A600188A0B /* VSTheme.h */,
+				840375F2177BD9A600188A0B /* VSTheme.m */,
+			);
+			name = DB5;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
