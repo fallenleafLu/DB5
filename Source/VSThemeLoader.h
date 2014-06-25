@@ -14,8 +14,9 @@
 @interface VSThemeLoader : NSObject
 
 @property (nonatomic, strong, readonly) VSTheme *defaultTheme;
-@property (nonatomic, strong, readonly) NSArray *themes;
+@property (nonatomic, strong, readonly) NSDictionary *themes;
 
-- (VSTheme *)themeNamed:(NSString *)themeName;
++ (VSThemeLoader *)sharedThemeLoader;
+- (instancetype)initWithPropertyListName:(NSString *)name;
 
 @end
