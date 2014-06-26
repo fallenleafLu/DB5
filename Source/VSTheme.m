@@ -180,9 +180,9 @@ static NSArray *separatedValues(NSString *originString);
     
 	if (stringIsEmpty(fontName)) {
 		font = [UIFont systemFontOfSize:fontSize];
-    } else if ([font isEqual:@"BoldSystem"]) {
+    } else if ([fontName isEqualToString:@"BoldSystem"]) {
         font = [UIFont boldSystemFontOfSize:fontSize];
-    } else if ([font isEqual:@"System"]) {
+    } else if ([fontName isEqualToString:@"System"]) {
         font = [UIFont systemFontOfSize:fontSize];
 	} else {
 		font = [UIFont fontWithName:fontName size:fontSize];
