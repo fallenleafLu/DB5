@@ -7,15 +7,13 @@
 //
 
 #import "VSThemeLoader.h"
-#import "VSTheme.h"
-
 
 @interface VSThemeLoader ()
 
 @property (nonatomic, strong, readwrite) VSTheme *defaultTheme;
 @property (nonatomic, strong, readwrite) NSDictionary *themes;
-@end
 
+@end
 
 @implementation VSThemeLoader
 
@@ -66,4 +64,3 @@
 }
 
 @end
-

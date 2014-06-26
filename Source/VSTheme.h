@@ -30,7 +30,16 @@ typedef NS_ENUM(NSUInteger, VSTextCaseTransform) {
 - (NSInteger)integerForKey:(NSString *)key;
 - (CGFloat)floatForKey:(NSString *)key;
 - (UIImage *)imageForKey:(NSString *)key; /*Via UIImage imageNamed:*/
-- (UIColor *)colorForKey:(NSString *)key; /*123ABC or #123ABC: 6 digits, leading # allowed but not required*/
+/**
+ *  Gets the color by the given key.
+ *  To use it, you must set 6 digits RGB Hex format like 123ABC or #123ABC (# is optional).
+ *  Set it empty if you want to use clear color.
+ *
+ *  @param key The key in the theme property list.
+ *
+ *  @return The specified edge insets.
+ */
+- (UIColor *)colorForKey:(NSString *)key;
 /**
  *  Gets the edge insets by the given key.
  *  To use it, you can set the values by the following format
@@ -45,10 +54,23 @@ typedef NS_ENUM(NSUInteger, VSTextCaseTransform) {
  *  4. key: (top value, left value, bottom value, right value)
  *  @param key The key in the theme property list.
  *
- *  @return The specific edge insets.
+ *  @return The specified edge insets.
  */
 - (UIEdgeInsets)edgeInsetsForKey:(NSString *)key;
-- (UIFont *)fontForKey:(NSString *)key; /*x and xSize keys*/
+/**
+ *  Gets the font by the given key.
+ *  To use it, you must set it by the following format.
+ *  key     : font name
+ *  key+Size: font size
+ *
+ *  If you want to use system font, set "System" as its font name.
+ *  If you want to use bold system font, set "BoldSystem" as its font name.
+ *
+ *  @param key The key in the theme property list
+ *
+ *  @return The specified font.
+ */
+- (UIFont *)fontForKey:(NSString *)key;
 /**
  *  Gets the point by the given key.
  *  To use it, you can set the values by the following format.
@@ -57,7 +79,7 @@ typedef NS_ENUM(NSUInteger, VSTextCaseTransform) {
  *  2. key: (x value, y value)
  *  @param key The key in the theme property list.
  *
- *  @return The specific point.
+ *  @return The specified point.
  */
 - (CGPoint)pointForKey:(NSString *)key;
 /**
@@ -68,7 +90,7 @@ typedef NS_ENUM(NSUInteger, VSTextCaseTransform) {
  *  2. key: (width value, height value.)
  *  @param key The key in the theme property list.
  *
- *  @return The specific size.
+ *  @return The specified size.
  */
 - (CGSize)sizeForKey:(NSString *)key; /*xWidth and xHeight keys*/
 - (NSTimeInterval)timeIntervalForKey:(NSString *)key;
