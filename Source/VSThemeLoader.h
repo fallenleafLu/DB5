@@ -7,9 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-
-@class VSTheme;
+#import "VSTheme.h"
 
 @interface VSThemeLoader : NSObject
 

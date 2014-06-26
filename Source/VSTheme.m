@@ -117,7 +117,7 @@ static NSArray *separatedValues(NSString *originString);
 	NSString *colorString = [self stringForKey:key];
 	UIColor *color = colorWithHexString(colorString);
 	if (!color) {
-		color = [UIColor blackColor];
+		color = [UIColor clearColor];
     }
     
 	[self.colorCache setObject:color
@@ -180,6 +180,10 @@ static NSArray *separatedValues(NSString *originString);
     
 	if (stringIsEmpty(fontName)) {
 		font = [UIFont systemFontOfSize:fontSize];
+    } else if ([font isEqual:@"BoldSystem"]) {
+        font = [UIFont boldSystemFontOfSize:fontSize];
+    } else if ([font isEqual:@"System"]) {
+        font = [UIFont systemFontOfSize:fontSize];
 	} else {
 		font = [UIFont fontWithName:fontName size:fontSize];
     }
@@ -330,7 +334,7 @@ static UIColor *colorWithHexString(NSString *hexString) {
 	/*Picky. Crashes by design.*/
 	
 	if (stringIsEmpty(hexString)) {
-		return [UIColor blackColor];
+		return [UIColor clearColor];
     }
 
 	NSMutableString *s = [hexString mutableCopy];
