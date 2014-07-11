@@ -83,7 +83,7 @@ static NSArray *separatedValues(NSString *originString);
 	return [object integerValue];
 }
 
-- (CGFloat)floatForKey:(NSString *)key {
+- (CGFloat)floatValueForKey:(NSString *)key {
 	id object = [self objectForKey:key];
 	if (!object) {
 		return  0.0f;
@@ -153,10 +153,10 @@ static NSArray *separatedValues(NSString *originString);
         }
     }
     
-	CGFloat left = [self floatForKey:[key stringByAppendingString:@"Left"]];
-	CGFloat top = [self floatForKey:[key stringByAppendingString:@"Top"]];
-	CGFloat right = [self floatForKey:[key stringByAppendingString:@"Right"]];
-	CGFloat bottom = [self floatForKey:[key stringByAppendingString:@"Bottom"]];
+	CGFloat left = [self floatValueForKey:[key stringByAppendingString:@"Left"]];
+	CGFloat top = [self floatValueForKey:[key stringByAppendingString:@"Top"]];
+	CGFloat right = [self floatValueForKey:[key stringByAppendingString:@"Right"]];
+	CGFloat bottom = [self floatValueForKey:[key stringByAppendingString:@"Bottom"]];
 
 	UIEdgeInsets edgeInsets = UIEdgeInsetsMake(top, left, bottom, right);
 	return edgeInsets;
@@ -170,7 +170,7 @@ static NSArray *separatedValues(NSString *originString);
     }
     
 	NSString *fontName = [self stringForKey:key];
-	CGFloat fontSize = [self floatForKey:[key stringByAppendingString:@"Size"]];
+	CGFloat fontSize = [self floatValueForKey:[key stringByAppendingString:@"Size"]];
 
 	if (fontSize < 1.0f) {
 		fontSize = 15.0f;
@@ -211,8 +211,8 @@ static NSArray *separatedValues(NSString *originString);
         }
     }
     
-	CGFloat pointX = [self floatForKey:[key stringByAppendingString:@"X"]];
-	CGFloat pointY = [self floatForKey:[key stringByAppendingString:@"Y"]];
+	CGFloat pointX = [self floatValueForKey:[key stringByAppendingString:@"X"]];
+	CGFloat pointY = [self floatValueForKey:[key stringByAppendingString:@"Y"]];
 
 	CGPoint point = CGPointMake(pointX, pointY);
 	return point;
@@ -231,8 +231,8 @@ static NSArray *separatedValues(NSString *originString);
         }
     }
     
-	CGFloat width = [self floatForKey:[key stringByAppendingString:@"Width"]];
-	CGFloat height = [self floatForKey:[key stringByAppendingString:@"Height"]];
+	CGFloat width = [self floatValueForKey:[key stringByAppendingString:@"Width"]];
+	CGFloat height = [self floatValueForKey:[key stringByAppendingString:@"Height"]];
 
 	CGSize size = CGSizeMake(width, height);
 	return size;

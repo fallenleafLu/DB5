@@ -28,7 +28,7 @@ typedef NS_ENUM(NSUInteger, VSTextCaseTransform) {
 - (BOOL)boolForKey:(NSString *)key;
 - (NSString *)stringForKey:(NSString *)key;
 - (NSInteger)integerForKey:(NSString *)key;
-- (CGFloat)floatForKey:(NSString *)key;
+- (CGFloat)floatValueForKey:(NSString *)key;
 - (UIImage *)imageForKey:(NSString *)key; /*Via UIImage imageNamed:*/
 /**
  *  Gets the color by the given key.
